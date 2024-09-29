@@ -1,7 +1,7 @@
 class Urls:
     BASE_URL = 'https://stellarburgers.nomoreparties.site' # Сервис  Stellar Burgers
-    ORDER_FEED_URL = 'https://stellarburgers.nomoreparties.site/feed' # URL Ленты Заказов
-    PROFILE_URL = 'https://stellarburgers.nomoreparties.site/account/profile' # URL Личный кабинет
+    ORDER_FEED_URL = '/feed' # URL Ленты Заказов
+    PROFILE_URL = '/account/profile' # URL Личный кабинет
 
 class User:
     EMAIL = 'ponomareva_9@gmail.com'

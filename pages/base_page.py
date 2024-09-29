@@ -18,12 +18,8 @@ class BasePage:
         self.driver.get(url)
 
     @allure.step('Поиск элементов на странице')
-    def find_elements(self, locator, wait_time=10):
+    def find_elements(self, locator, wait_time=20):
         return WebDriverWait(self.driver, wait_time).until(expected_conditions.presence_of_all_elements_located(locator))
-
-    @allure.step('Дождаться видимости элемента')
-    def wait_until_element_visibility(self, locator):
-        WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(locator))
 
     @allure.step('Получить текст на элементе')
     def get_text_on_element(self, locator):
@@ -86,7 +82,3 @@ class BasePage:
     @allure.step("Ожидание перехода на новый Url")
     def wait_new_url(self, url):
         WebDriverWait(self.driver, 15).until(expected_conditions.url_to_be(url))
-
-    @allure.step("Нахождение нескольких элементов")
-    def find_until_all_elements_located(self, locator):
-        return WebDriverWait(self.driver, 20).until(expected_conditions.presence_of_all_elements_located(locator))
