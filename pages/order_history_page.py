@@ -14,3 +14,4 @@ class OrderHistoryPage(BasePage):
     @allure.step('Получить id заказа в Истории заказов авторизованного пользователя')
     def get_id_orders_from_history(self, order_id):
         return self.check_order_id(order_id, locator=OrderHistoryPageLocators.ALL_ORDERS_USERS_IN_HISTORY)
+

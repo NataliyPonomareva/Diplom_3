@@ -12,7 +12,7 @@ class MainPage(BasePage):
 
     @allure.step('Клик на кнопку "Личный кабинет"')
     def click_button_personal_account(self):
-        self.click_by_element(MainPageLocators.PERSONAL_ACCOUNT_BUTTON)
+        self.click_by_element(locator=MainPageLocators.PERSONAL_ACCOUNT_BUTTON)
 
     @allure.step('Нажатие кнопки "Личный кабинет" после оформления заказа')
     def click_account_button(self):
@@ -22,9 +22,9 @@ class MainPage(BasePage):
 
     @allure.step('Клик на кнопку "Лента заказов"')
     def click_button_order_feed(self):
-        self.wait_until_element_visibility(MainPageLocators.BUTTON_ORDER_FEED)
+        self.wait_and_find_element(MainPageLocators.BUTTON_ORDER_FEED)
         self.move_to_element_and_click(MainPageLocators.BUTTON_ORDER_FEED)
-        self.wait_until_element_visibility(MainPageLocators.TITLE_ORDER_FEED)
+        self.wait_and_find_element(MainPageLocators.TITLE_ORDER_FEED)
 
     @allure.step('Клик на кнопку "Конструктор"')
     def click_button_constructor(self):
@@ -64,7 +64,7 @@ class MainPage(BasePage):
 
     @allure.step('Запомнить номер заказа, отраженный в окне с подтверждением оформления ')
     def get_order_id(self):
-        self.wait_until_element_visibility(locator=MainPageLocators.ORDER_IDENTIFICATOR)
+        self.wait_and_find_element(locator=MainPageLocators.ORDER_IDENTIFICATOR)
         order_id = self.get_text_on_element(locator=MainPageLocators.ORDER_ID)
         while order_id == '9999':
             order_id = self.get_text_on_element(locator=MainPageLocators.ORDER_ID)

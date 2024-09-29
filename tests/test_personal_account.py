@@ -19,5 +19,6 @@ class TestPersonalAccount:
         personal_account.click_order_history()  # Клик на поле "История заказов"
         personal_account.wait_and_find_order_history()  # Дожидаемся загрузки списка заказов
         personal_account.click_button_exit()  # Клик на кнопку "Выход"
+        personal_account = LoginPage(driver)
 
-        assert personal_account.order_history_visible()  # отражается форма авторизации
+        assert personal_account.form_authorization_visible()  # отражается форма авторизации

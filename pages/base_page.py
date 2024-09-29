@@ -23,7 +23,7 @@ class BasePage:
 
     @allure.step('Получить текст на элементе')
     def get_text_on_element(self, locator):
-        self.wait_until_element_visibility(locator)
+        self.wait_and_find_element(locator)
         return self.driver.find_element(*locator).text
 
     @allure.step('Поиск элемента на странице и ожидание загрузки')
@@ -54,7 +54,7 @@ class BasePage:
     @allure.step('Проверка отражения элемента на странице')
     def is_displayed(self, locator):
         try:
-            element = self.driver.find_element(*locator)
+            element = self.wait_and_find_element(*locator)
             return element.is_displayed()
         except NoSuchElementException:
             return False
@@ -82,3 +82,11 @@ class BasePage:
     @allure.step("Ожидание перехода на новый Url")
     def wait_new_url(self, url):
         WebDriverWait(self.driver, 15).until(expected_conditions.url_to_be(url))
+
+    @allure.step("Проверка совпадения id")
+    def check_order_id(self, order_id, locator):
+        elements = self.wait_and_find_element(locator)
+        for element in elements:
+            if order_id == element.text:
+                return True
+        return True

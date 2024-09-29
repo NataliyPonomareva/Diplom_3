@@ -18,3 +18,7 @@ class LoginPage(BasePage):
     @allure.step('Клик на ссылку "Восстановить пароль"')
     def click_link(self):
         self.click_by_element(LoginPageLocators.LINK_RECOVER_PASSWORD)
+
+    @allure.step('Отражение формы авторизации')
+    def form_authorization_visible(self):
+        return self.wait_and_find_element(LoginPageLocators.FORM_AUTHORIZATION)
